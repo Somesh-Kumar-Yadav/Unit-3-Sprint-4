@@ -64,6 +64,8 @@ export function AppForm({setNotesDescription, setNotesTitle,notesDescription,not
         catch (e) {
             console.log(e);
         }
+        setNotesDescription("");
+        setNotesTitle("")
         getNotes();
         getNotes();
     }
