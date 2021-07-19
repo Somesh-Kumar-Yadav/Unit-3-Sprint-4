@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 import styled from "styled-components"
-import { AppForm } from "./AppForm"
+
 const Card = styled.div`
 width :100%;
 display:flex;
@@ -10,15 +10,61 @@ align-items: center;
 div{
 margin:10px
 }
+.Title{
+    display: flex;
+flex-direction: column;
+width:300px;
+}
+.Date{
+    width:200px;
+    display: flex;
+flex-direction: column;
+}
+.Button{
+    width:200px;
+    display: flex;
+flex-direction: column;
+}
 button{
     margin: 10px;
 }
-
 `
-export function DisplayNotes({ notesArray, setNotesArray,getNotes }) {
+const EditTab = styled.div`
+width:100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+    margin: 10px auto;
+textarea{
+    width:400px;
+    height:300px;
+    outline: none;
+    padding: 10px;
+}
+.edit{
+   font-size: 32px;
+
+}
+button{
+    display: block;
+    width:100px;
+    height:40px;
+    margin-top: 30px;
+    border-radius: 15px;
+    border:none;
+    color:#fcfcfc;
+    background: black;
+    transition:0.5s
+}
+button:hover{
+    transform: scale(0.9);
+}
+`
+export function DisplayNotes({ notesArray, setNotesArray,getNotes,id,SetId }) {
     const [editData, setEditData] = React.useState("");
     const [showEdit, SetShowEdit] = React.useState(false);
-    const [id, SetId] = React.useState(null);
+    
     const Edit = () => {
          const data = editData
         try {
@@ -53,11 +99,11 @@ export function DisplayNotes({ notesArray, setNotesArray,getNotes }) {
     
 
     if (showEdit) {
-        return <>
-            <div>
+        return <EditTab>
+            <div className="edit">
             Edit Tab
             </div>
-    <textarea onChange={(e) => {
+    <textarea placeholder="Edit your description ..." onChange={(e) => {
                 setEditData(e.target.value);
                 console.log(e.target.value);
     }}></textarea>
@@ -67,7 +113,7 @@ export function DisplayNotes({ notesArray, setNotesArray,getNotes }) {
             Edit();
         }
     }>Done</button>
-    </>
+    </EditTab>
     }
 
 
@@ -75,15 +121,15 @@ export function DisplayNotes({ notesArray, setNotesArray,getNotes }) {
         {
             notesArray.map(i => {
                 return <Card key={i.id}>
-                    <div>
+                    <div className="Title">
                         <h4>Title : {i.title}</h4>
                         <p>Description : { i.description}</p>
                     </div>
-                    <div>
+                    <div className="Date">
                     <p>Date : {i.date}</p>
                     <p>Time : {i.time}</p>
                     </div>
-                    <div>
+                    <div className="Button">
                     <button onClick={() => {
                         HandleEdit(i.id);
                     }}>Edit Notes</button>

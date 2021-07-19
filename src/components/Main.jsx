@@ -13,6 +13,7 @@ export function Main() {
     const [notesTitle, setNotesTitle] = React.useState("");
     const [notesDescription, setNotesDescription] = React.useState("");
     const [notesArray, setNotesArray] = React.useState([]);
+    const [id, SetId] = React.useState(null);
     const getNotes = () => {
         try {
             axios.get("http://localhost:3004/notes").then(res => {
@@ -26,7 +27,7 @@ export function Main() {
     }
     return <div>
         <Title>My Notes App</Title>
-        <AppForm getNotes={getNotes} notesTitle={notesTitle} notesDescription={notesDescription} setNotesTitle={setNotesTitle} setNotesDescription={ setNotesDescription}/>
-        <DisplayNotes getNotes={getNotes} notesArray={notesArray} setNotesArray={setNotesArray} notesTitle={notesTitle} notesDescription={notesDescription} setNotesTitle={setNotesTitle} setNotesDescription={ setNotesDescription}/>
+            <AppForm getNotes={getNotes} notesTitle={notesTitle} notesDescription={notesDescription} setNotesTitle={setNotesTitle} setNotesDescription={ setNotesDescription}/>
+        <DisplayNotes id={id} SetId={SetId} getNotes={getNotes} notesArray={notesArray} setNotesArray={setNotesArray} notesTitle={notesTitle} notesDescription={notesDescription} setNotesTitle={setNotesTitle} setNotesDescription={ setNotesDescription}/>
     </div>
 }
