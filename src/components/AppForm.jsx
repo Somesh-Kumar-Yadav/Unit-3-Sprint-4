@@ -45,7 +45,7 @@ export function AppForm({setNotesDescription, setNotesTitle,notesDescription,not
         } else {
             setNotesDescription(e.target.value);
         }
-        console.log(e.target.value);
+        // console.log(e.target.value);
     }
     const HandleSave = () => {
         const date = new Date();

@@ -105,7 +105,7 @@ export function DisplayNotes({ notesArray, setNotesArray,getNotes,id,SetId }) {
             </div>
     <textarea placeholder="Edit your description ..." onChange={(e) => {
                 setEditData(e.target.value);
-                console.log(e.target.value);
+                // console.log(e.target.value);
     }}></textarea>
     <button onClick={
         ()=>{

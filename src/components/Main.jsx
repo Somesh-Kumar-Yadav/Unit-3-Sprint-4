@@ -17,7 +17,7 @@ export function Main() {
     const getNotes = () => {
         try {
             axios.get("http://localhost:3004/notes").then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setNotesArray([...res.data]);
             })
         }
